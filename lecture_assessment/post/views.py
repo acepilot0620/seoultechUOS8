@@ -2,7 +2,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from .models import Post
-from account.models import Profile
+from account.models import Account
 
 # Create your views here.
 
@@ -10,27 +10,27 @@ def post(request):
 
     if request.method == "POST":
         post = Post()
-        try: #로그인 체크
+        if request.user.is_anonymous:
+            return redirect('account:login')
+        else:
             user = request.user
-            profile = Profile.objects.get(user=user)
+            profile = Account.objects.get(user=user)
             post.author = profile
             post.prof = request.POST['prof']
             post.term = request.POST['term']
-            post.content = request.POST['prof']
-            post.total_score = request.POST['prof']
             post.check_att = request.POST['attend']
             post.lev_of_diff = request.POST['Level']
             post.quantity = request.POST['Study']
             post.grade = request.POST['Grade']
             post.achievement = request.POST['Value']
-            post.save()
-        except: #유저 로그인 안 했을 경우
-            return redirect('account:login')
-        return redirect('home')
+            post.content = request.POST.get('content')
+            post.total_score = (int(post.check_att) + int(post.lev_of_diff) + int(post.quantity) + int(post.grade) + int(post.achievement))//5
+            post.save() 
+            return redirect('account:home')
     else:
         try: #로그인 체크
             user = request.user
-            profile = Profile.objects.get(user=user)
+            profile = Account.objects.get(user=user)
         except: #유저 로그인 안했을 경우
             return redirect('account:login')
         return render(request, 'post/post.html')

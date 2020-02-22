@@ -11,6 +11,7 @@
   <body>
     <div class="bg-modal">
       <form class="modalContent" method="POST" action="">
+      {% csrf_token %}
         <div class="lectureName">강의명</div>
         <div>
           <input type="text" placeholder="ex)해석학 및 실습" name="lecture" />
@@ -59,6 +60,8 @@
           <option value="3">4점</option>
           <option value="3">5점</option>
         </select>
+        <div class="lectureValue">평가 내용</div>
+        <textarea name="content" cols="41" rows="10"></textarea>
         <div class="lectureMake">
           <input type="submit" value="강의평가 완성" />
         </div>
