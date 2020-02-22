@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>과기대멋사8기</title>
+    <link rel="stylesheet" href="../static/css/header.css" />
+    <link rel="stylesheet" href="../static/css/reset.css" />
+    <link rel="stylesheet" href="../static/css/secondMain.css" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    {% load static %}
+    <div class="main">
+        <div class="header">
+            <a href="{% url 'home' %}" class="header__logo">
+                <img src="../static/img/logo.png" alt="로고입니다." />
+            </a>
+            <div class="header__navbar">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="">Lecture</a>
+                {% if user.is_active == True %}
+                <a href="{% url 'logout' %}">Log out</a>
+                <p>{{nickname}}</p>
+                {% else %}
+                <a href="{% url 'login' %}">Log in</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="mainBody">
+            <div class="lecture">
+                <div class="lectureList">강의평가 목록</div>
+                <div class="lectureContainer">
+                        <div class="lectureHead">
+                            <div class="lectureTitle">강의명</div>
+                            <div class="lectureProfessor">교수명</div>
+                            <div class="lectureSemester">해당학기</div>
+                        </div>
+                        <div class="lectureBorder"></div>
+                        <div class="lectureContent">
+                            <div class="lectureAttend">출석체크 : 3점</div>
+                            <div class="lectureLevel">난이도 : 2점</div>
+                            <div class="lectureStudy">학습량 : 3점</div>
+                            <div class="lectureGrade">학점 : 4점</div>
+                            <div class="lectureValue">성취감 : 5점</div>
+                            <div class="lectureAvg">평점 : 3.4점</div>
+                        </div>
+                </div>
+                <div class="lectureUpload">
+                    <a href=""><img src="../static/img/challengeUploadBtn.svg" alt="" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
