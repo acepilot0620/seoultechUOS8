@@ -21,17 +21,17 @@ def login(request):
         user = auth.authenticate(request, username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('home')
+            return redirect('account:home')
         else:
             messages.info(request, "회원정보가 일치하지 않습니다.")
-            return redirect('login')
+            return redirect('account:login')
     else:
         return render(request, 'login.html')
 
 
 def logout(request):
     auth.logout(request)
-    return redirect('home')
+    return redirect('account:home')
 
 def signup(request):
     if request.method == "POST":
@@ -44,18 +44,18 @@ def signup(request):
 
         if user_id == ""or nickname =="" or user_password1 == "" or user_password2 == "":
             messages.info(request,"모든 항목을 채워주세요.")
-            return redirect('signup')
+            return redirect('account:signup')
         
                 # 비밀번호가 다를 때
         if not user_password1 == user_password2:
             messages.info(request, "비밀번호가 다릅니다.")
-            return redirect('signup')
+            return redirect('account:signup')
 
         
         user = User.objects.create_user(username=user_id, password=user_password1)
         user.save()
         account = Account(user=user, name=nickname)
         account.save()
-        return redirect('home')
+        return redirect('account:home')
     else:
         return render(request, 'signup.html')

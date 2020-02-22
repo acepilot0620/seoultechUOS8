@@ -16,17 +16,17 @@
     {% load static %}
     <div class="main">
         <div class="header">
-            <a href="{% url 'home' %}" class="header__logo">
+            <a href="{% url 'account:home' %}" class="header__logo">
                 <img src="../static/img/logo.png" alt="로고입니다." />
             </a>
             <div class="header__navbar">
-                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'account:home' %}">Home</a>
                 <a href="">Lecture</a>
                 {% if user.is_active == True %}
-                <a href="{% url 'logout' %}">Log out</a>
+                <a href="{% url 'account:logout' %}">Log out</a>
                 <p>{{nickname}}</p>
                 {% else %}
-                <a href="{% url 'login' %}">Log in</a>
+                <a href="{% url 'account:login' %}">Log in</a>
                 {% endif %}
             </div>
         </div>
@@ -50,7 +50,7 @@
                         </div>
                 </div>
                 <div class="lectureUpload">
-                    <a href=""><img src="../static/img/challengeUploadBtn.svg" alt="" /></a>
+                    <a href="{% url 'post:post' %}"><img src="../static/img/challengeUploadBtn.svg" alt="" /></a>
                 </div>
             </div>
         </div>
