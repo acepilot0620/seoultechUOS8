@@ -2,12 +2,8 @@ from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from .models import Post
-<<<<<<< HEAD
-from account.models import Accout
-=======
 from account.models import Account
 
->>>>>>> a39c3ef64714e205898f61743f9a0f6a76440362
 # Create your views here.
 
 def post(request):
@@ -27,17 +23,10 @@ def post(request):
             post.quantity = request.POST['Study']
             post.grade = request.POST['Grade']
             post.achievement = request.POST['Value']
-<<<<<<< HEAD
-            post.save()
-        except: #유저 로그인 안 했을 경우
-            return redirect('account:login')
-        return redirect('accout:home')
-=======
             post.content = request.POST.get('content')
             post.total_score = (int(post.check_att) + int(post.lev_of_diff) + int(post.quantity) + int(post.grade) + int(post.achievement))//5
             post.save() 
             return redirect('account:home')
->>>>>>> a39c3ef64714e205898f61743f9a0f6a76440362
     else:
         try: #로그인 체크
             user = request.user
