@@ -1,0 +1,66 @@
+.main {
+  position: relative;
+}
+
+.mainBody {
+  padding: 0;
+  align-items: stretch;
+}
+
+.lecture {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  border-radius: 0 20px 20px 0;
+  margin-left: auto;
+  padding: 13% 50px 50px;
+  overflow-y: auto;
+}
+
+.lectureHead{
+  display : flex;
+}
+
+.lectureBorder{
+    width : 100%;
+    height: 3px;
+    background: black;
+}
+
+.lectureList {
+  font-weight: 700;
+  font-size: 1.7rem;
+  margin-bottom: 15px;
+}
+
+.lectureTitle{
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.lectureProfessor{
+  font-size : 1.3rem;
+  color : gray;
+}
+
+.lectureSemester{
+  font-size : 1.0rem;
+  color : gray;
+}
+.lectureContainer {
+  width: 90%;
+}
+
+.lectureContainer + .lectureContainer {
+  margin-top: 30px;
+}
+
+
+.lectureUpload {
+  text-align: center;
+}
+
+.lectureUpload img {
+  height: 40px;
+}
