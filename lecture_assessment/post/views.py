@@ -2,8 +2,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from .models import Post
-from account.models import Profile
-
+from account.models import Accout
 # Create your views here.
 
 def post(request):
@@ -12,7 +11,7 @@ def post(request):
         post = Post()
         try: #로그인 체크
             user = request.user
-            profile = Profile.objects.get(user=user)
+            profile = Account.objects.get(user=user)
             post.author = profile
             post.prof = request.POST['prof']
             post.term = request.POST['term']
@@ -26,7 +25,7 @@ def post(request):
             post.save()
         except: #유저 로그인 안 했을 경우
             return redirect('account:login')
-        return redirect('home')
+        return redirect('accout:home')
     else:
         try: #로그인 체크
             user = request.user
@@ -34,3 +33,8 @@ def post(request):
         except: #유저 로그인 안했을 경우
             return redirect('account:login')
         return render(request, 'post/post.html')
+
+def delete(requset, post_id):
+    post = Post.objects.get(id=post_id)
+    post.delete()
+    return redirect('account:home')
