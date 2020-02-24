@@ -48,6 +48,10 @@
                         </div>
                         <div class="lectureBorder"></div>
                         <div class="lectureContent">
+                        <div class="lectureLeft">
+                            이 강의를 듣지 마시오.
+                        </div>
+                        <div class="lectureRight">
                             <div class="lectureAttend">출석체크 : {{post.check_att}}점</div>
                             <div class="lectureLevel">난이도 : {{post.lev_of_diff}}점</div>
                             <div class="lectureStudy">학습량 : {{post.quantity}}</div>
@@ -55,6 +59,7 @@
                             <div class="lectureValue">성취감 : {{post.acheivement}}점</div>
                             <div class="lectureAvg">평점 : {{post.total_score}}점</div>
                         </div>
+                    </div>
                         <div class="update">
                             <p><a href="{% url 'post:update' post.id %}">수정</a></p>  
                         </div>
