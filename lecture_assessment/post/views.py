@@ -37,7 +37,9 @@ def post(request):
         return render(request, 'post/post.html')
 
 def update(request, post_id):
-    post = Post.objects.get(id=post_id)
+
+    post = get_object_or_404(Post, pk=post_id)
+
     if request.method == "POST":
         post.check_att = request.POST['attend']
         post.lev_of_diff = request.POST['Level']
@@ -51,7 +53,10 @@ def update(request, post_id):
     else:
         return render(request, 'post/update.html',{'post':post})
 
-def delete(requset, post_id):
-    post = Post.objects.get(id=post_id)
+def delete(request, post_id):
+
+    post = get_object_or_404(Post, pk=post_id)
+
     post.delete()
+    
     return redirect('account:home')

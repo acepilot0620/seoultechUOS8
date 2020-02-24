@@ -19,9 +19,6 @@ class Post(models.Model):
     grade = models.PositiveIntegerField(default=0)                           #학점
     achievement = models.PositiveIntegerField(default=0)                     #성취
 
-    def __str__(self):
-        return self.total_score
-
     def summary(self):
         return self.content[:100]
 

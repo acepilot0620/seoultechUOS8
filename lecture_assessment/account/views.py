@@ -4,13 +4,22 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from django.contrib import auth
 from .models import Account
+from post.models import Post
 
 # Create your views here.
 def home(request):
-    context = {}
+
+    post_list=Post.objects.all()
+
     if request.user.is_authenticated:
         account = Account.objects.get(user=request.user)
-        context.setdefault('nickname', account.name)
+        # context.setdefault('nickname', account.name)
+
+    context = {
+        'nickname' : account.name,
+        'post_list': post_list
+    }
+
     return render(request, 'home.html',context)
 
 def login(request):
