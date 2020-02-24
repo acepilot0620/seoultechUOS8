@@ -76,11 +76,11 @@
                 <div class="lectureUpload">
                     <a href="{% url 'post:post' %}"><img src="../static/img/challengeUploadBtn.svg" alt="" /></a>
                 </div>
-                {% else %}
-                <div style="width : 50%; height : 30%; font-size : 2rem; position:absolute; top:50%; left:35%;">로그인 하고 시작하기<a href="{% url 'account:login' %}" style="color : blue;">Log in</a>
+                 {% else %}
+                <div style="width : 50%; height : 30%; font-size : 2rem; position:absolute; top:50%; left:35%;">로그인 하고 시작하기
+                <div style="padding-left : 100px;"><a href="{% url 'account:login' %}" style="color : blue;">Log in</a></div>
                 </div>
                 {% endif %}
-
                 
             </div>
         </div>
