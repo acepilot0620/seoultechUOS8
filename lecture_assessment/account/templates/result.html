@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>과기대멋사8기</title>
+    <title>검색어:{{search}}로 검색한 결과</title>
     <link rel="stylesheet" href="../static/css/header.css" />
     <link rel="stylesheet" href="../static/css/reset.css" />
     <link rel="stylesheet" href="../static/css/secondMain.css" />
@@ -40,38 +40,25 @@
                     <input name="search" type="search" placeholder="강의명을 입력해주세요"/>
                     <button type="submit">검색</button>
                 </form>
-                {% for post in post_list %}
+                {% for result in result %}
                 <div class="lectureContainer">
                         <div class="lectureHead">
-                            <div class="lectureTitle">{{post.class_name}}</div>
-                            <div class="lectureProfessor">{{post.prof}}</div>
-                            <div class="lectureSemester">{{post.term}}</div>
+                            <div class="lectureTitle">{{result.class_name}}</div>
+                            <div class="lectureProfessor">{{result.prof}}</div>
+                            <div class="lectureSemester">{{result.term}}</div>
                         </div>
                         <div class="lectureBorder"></div>
                         <div class="lectureContent">
-                        <div class="lectureLeft">
-                            이 강의를 듣지 마시오.
+                            <div class="lectureAttend">출석체크 : {{result.check_att}}점</div>
+                            <div class="lectureLevel">난이도 : {{result.lev_of_diff}}점</div>
+                            <div class="lectureStudy">학습량 : {{result.quantity}}</div>
+                            <div class="lectureGrade">학점 : {{result.grad}}점</div>
+                            <div class="lectureValue">성취감 : {{result.acheivement}}점</div>
+                            <div class="lectureAvg">평점 : {{result.total_score}}점</div>
                         </div>
-                        <div class="lectureRight">
-                            <div class="lectureAttend">출석체크 : {{post.check_att}}점</div>
-                            <div class="lectureLevel">난이도 : {{post.lev_of_diff}}점</div>
-                            <div class="lectureStudy">학습량 : {{post.quantity}}</div>
-                            <div class="lectureGrade">학점 : {{post.grad}}점</div>
-                            <div class="lectureValue">성취감 : {{post.acheivement}}점</div>
-                            <div class="lectureAvg">평점 : {{post.total_score}}점</div>
-                        </div>
-                    </div>
-                        <div class="update">
-                            <p><a href="{% url 'post:update' post.id %}">수정</a></p>  
-                        </div>
-                        <div class="delete">
-                            <p><a href="{% url 'post:delete' post.id %}">삭제</a></p>  
-                        </div>
+
                 </div>
                 {% endfor %}
-                <div class="lectureUpload">
-                    <a href="{% url 'post:post' %}"><img src="../static/img/challengeUploadBtn.svg" alt="" /></a>
-                </div>
             </div>
         </div>
     </div>

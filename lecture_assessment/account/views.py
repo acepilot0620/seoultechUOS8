@@ -21,9 +21,42 @@ def home(request):
             'post_list': post_list
         }
     else:
-        context = {'post_list': post_list}        
+        context = {'post_list': post_list}
+    if request.method == "POST":
+        search = request.POST.get('search')
 
+        class_name_list = []
+        filtered_result = []
+
+        for post in post_list:
+            class_name_list.append(post.class_name)
+        for class_name in class_name_list:
+            if search in class_name:
+                wanted_result = Post.objects.get(class_name=class_name)
+                filtered_result.append(wanted_result)
+
+        context = {'result':filtered_result,
+                   'search':search        }
+        return render(request, 'result.html',context)
     return render(request, 'home.html',context)
+
+# def search(request):
+#     if request.method == "POST":
+#         search = request.POST.get('search')
+#         post_list = Post.objects.all()
+#         class_name_list = []
+#         filtered_result = []
+
+#         for post in post_list:
+#             class_name_list.append(post.class_name)
+#         for class_name in class_name_list:
+#             if search in class_name:
+#                 wanted_result = Post.objects.get(class_name=class_name)
+#                 filtered_result.append(wanted_result)
+
+#         context = {'result':filtered_result,
+#                    'search':search        }
+#         return render(request, 'result.html',context)
 
 def login(request):
     if request.method == "POST":
