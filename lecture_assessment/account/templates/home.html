@@ -34,6 +34,11 @@
         <div class="mainBody">
             <div class="lecture">
                 <div class="lectureList">강의평가 목록</div>
+                <form class="searchBar">
+                    강의평가 검색
+                    <input type="search" placeholder="운영체제"/>
+                    <button type="submit"></button>
+                </form>
                 {% for post in post_list %}
                 <div class="lectureContainer">
                         <div class="lectureHead">
