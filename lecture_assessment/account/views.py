@@ -14,11 +14,14 @@ def home(request):
     if request.user.is_authenticated:
         account = Account.objects.get(user=request.user)
         # context.setdefault('nickname', account.name)
-
-    context = {
-        'nickname' : account.name,
-        'post_list': post_list
-    }
+    if request.user.is_authenticated:
+        context = {
+            
+            'nickname' : account.name,
+            'post_list': post_list
+        }
+    else:
+        context = {'post_list': post_list}        
 
     return render(request, 'home.html',context)
 
