@@ -14,12 +14,12 @@
       {% csrf_token %}
         <div class="lectureName">강의명</div>
         <div>
-          <input type="text" placeholder="ex)해석학 및 실습" name="lecture" />
+          <input type="text" placeholder="ex)해석학 및 실습" name="lecture" required/>
         </div>
         <div class="lectureProfessor">교수님</div>
-        <div><input type="text" placeholder="ex)홍길동 교수님" name="prof"/></div>
+        <div><input type="text" placeholder="ex)홍길동 교수님" name="prof" required/></div>
         <div class="lectureSemester">수강한 학기</div>
-        <div><input type="text" placeholder="ex)2019년-2학기" name="term"/></div>
+        <div><input type="text" placeholder="ex)2019년-2학기" name="term" required/></div>
         <div class="lectureAttend">출석체크</div>
         <select name="attend" required>
           <option value="1">1점</option>
