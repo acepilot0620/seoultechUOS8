@@ -48,10 +48,11 @@
                             <div class="lectureSemester">{{result.term}}</div>
                         </div>
                         <div class="lectureBorder"></div>
-                        <div class="lectureContent">
-                        <div class="lectureLeft">
+                        <div class="lectureContent" style="display : flex;">
+                        <div class="lectureLeft" style="float : left; width : 60%;">
                             <div class="lectureAttend">{{result.content}}</div>
                         </div>
+                        <div style="text-align: right; width : 40%;">
                             <div class="lectureAttend">출석체크 : {{result.check_att}}점</div>
                             <div class="lectureLevel">난이도 : {{result.lev_of_diff}}점</div>
                             <div class="lectureStudy">학습량 : {{result.quantity}}</div>
@@ -59,7 +60,7 @@
                             <div class="lectureValue">성취감 : {{result.acheivement}}점</div>
                             <div class="lectureAvg">평점 : {{result.total_score}}점</div>
                         </div>
-
+                    </div>
                 </div>
                 {% endfor %}
             </div>
