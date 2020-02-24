@@ -77,8 +77,9 @@
                     <a href="{% url 'post:post' %}"><img src="../static/img/challengeUploadBtn.svg" alt="" /></a>
                 </div>
                 {% else %}
-                로그인 하고 시작하기
-                <a href="{% url 'account:login' %}">Log in</a>
+                <div style="width : 100%; height : 60%;position:absolute; 
+                top:50%; left:50%; ">로그인 하고 시작하기<a href="{% url 'account:login' %}" style="color : blue;">Log in</a>
+                </div>
                 {% endif %}
 
                 
