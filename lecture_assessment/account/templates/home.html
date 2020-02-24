@@ -40,6 +40,8 @@
                     <input name="search" type="search" placeholder="강의명을 입력해주세요"/>
                     <button type="submit">검색</button>
                 </form>
+
+                {% if user.is_active == True%}
                 {% for post in post_list %}
                 <div class="lectureContainer">
                         <div class="lectureHead">
@@ -74,6 +76,12 @@
                 <div class="lectureUpload">
                     <a href="{% url 'post:post' %}"><img src="../static/img/challengeUploadBtn.svg" alt="" /></a>
                 </div>
+                {% else %}
+                로그인 하고 시작하기
+                <a href="{% url 'account:login' %}">Log in</a>
+                {% endif %}
+
+                
             </div>
         </div>
     </div>
