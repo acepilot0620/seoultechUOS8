@@ -20,6 +20,7 @@
 
 .lectureHead{
   display : flex;
+  justify-content: space-between;
 }
 
 .lectureBorder{
@@ -37,6 +38,7 @@
 .lectureTitle{
   font-weight: 700;
   font-size: 1.3rem;
+  margin-right : 50px;
 }
 
 .lectureProfessor{
@@ -63,4 +65,19 @@
 
 .lectureUpload img {
   height: 40px;
+}
+
+.lectureContent{
+  display : flex;
+  justify-content: space-between;
+}
+
+.lectureLeft{
+  width : 60%;
+  float : left;
+}
+
+.lectureRight{
+  width : 40%;
+  text-align : right;
 }
