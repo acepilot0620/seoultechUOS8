@@ -65,6 +65,7 @@ def signup(request):
         user.save()
         account = Account(user=user, name=nickname)
         account.save()
+        auth.login(request, user)
         return redirect('account:home')
     else:
         return render(request, 'signup.html')
