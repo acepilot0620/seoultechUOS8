@@ -61,11 +61,13 @@
                             <div class="lectureAvg">평점 : {{post.total_score}}점</div>
                         </div>
                     </div>
-                        <div class="update" style="text-align : center;">
-                            <p><a href="{% url 'post:update' post.id %}">수정</a></p>  
-                        </div>
-                        <div class="delete" style="text-align : center;">
-                            <p><a href="{% url 'post:delete' post.id %}">삭제</a></p>  
+                        <div class="change" style="display : flex; float : right; padding : 3px;">
+                            <div class="update" style="padding : 2px; color : blue;">
+                                <p><a href="{% url 'post:update' post.id %}">수정</a></p>  
+                            </div>
+                            <div class="delete" style="padding : 2px;color : red;">
+                                <p><a href="{% url 'post:delete' post.id %}">삭제</a></p>  
+                            </div>
                         </div>
                 </div>
                 {% endfor %}
